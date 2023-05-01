@@ -1,10 +1,10 @@
 
 let Util = {
 	rand( min, max ) {
-		return m.random() * ( max - min ) + min;
+		return Util.m.random() * ( max - min ) + min;
 	},
 	randInt( min, max ) {
-		return m.floor( m.random() * ( max - min + 1) ) + min;
+		return Util.m.floor( Util.m.random() * ( max - min + 1) ) + min;
 	},
 	isset( prop ) {
 		return typeof prop != 'undefined';

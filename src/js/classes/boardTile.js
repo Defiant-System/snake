@@ -10,10 +10,9 @@ class BoardTile {
 		this.z = 0;
 		this.w = opt.w;
 		this.h = opt.h;
-		this.elem = document.createElement( 'div' );
-		this.elem.style.position = 'absolute';
-		this.elem.className = 'tile';
-		this.parentState.stageElem.appendChild( this.elem );
+
+		let div = $(`<div class="tile"></div>`)[0];
+		this.elem = this.parentState.stageElem.append(div);
 		this.classes = {
 			pressed: 0,
 			path: 0,
@@ -68,19 +67,22 @@ class BoardTile {
 		this.y = this.row * this.parentState.tileHeight;
 		this.w = this.parentState.tileWidth - this.parentState.spacing;
 		this.h = this.parentState.tileHeight - this.parentState.spacing;
-		this.elem.style.left = this.x + 'px';
-		this.elem.style.top = this.y + 'px';
-		this.elem.style.width = this.w + 'px';
-		this.elem.style.height = this.h + 'px';
+		
+		this.elem.css({
+			left: this.x,
+			top: this.y,
+			width: this.w,
+			height: this.h,
+		});
 	}
 
 	render() {
-		var classString = '';
+		var classString = "";
 		for( var k in this.classes ) {
 			if( this.classes[ k ] ) {
-				classString += k + ' ';
+				classString += k + " ";
 			}
 		}
-		this.elem.className = 'tile ' + classString;
+		this.elem.prop({ className: "tile " + classString });
 	}
 }

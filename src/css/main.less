@@ -3,35 +3,25 @@ background: #000;
 
 .score {
 	position: absolute;
-	top: 8px;
-	left: 8px;
-	right: 8px;
-	bottom: 8px;
+	top: 1px;
+	left: 300px;
+	right: 300px;
+	text-align: center;
 	color: #fff;
 	font: 100%/1.5 sans-serif;
 	z-index: 2;
 }
 
-.state {
+.stage {
 	position: absolute;
-	top: 8px;
-	left: 8px;
-	right: 8px;
-	bottom: 8px;
+	top: 19px;
+	left: 0;
 	background: radial-gradient(#333, #111);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: #fff;
 	font: 100%/1.5 sans-serif;
-
-	.stage {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
 
 	.tile {
 		background: rgba(0, 0, 0, 0.15);
@@ -43,6 +33,20 @@ background: #000;
 			transform;
 		transform: translateZ(0);
 		transition-duration: 3000ms;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 0;
+			height: 0;
+			margin: auto;
+			opacity: 0;
+			transition: opacity 300ms;
+		}
 
 		&.path:before {
 			opacity: 1;

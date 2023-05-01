@@ -83,7 +83,8 @@ class Snake {
 				h: this.parentState.tileHeight - this.parentState.spacing
 			}));
 			this.last = this.tiles.pop();
-			this.parentState.stageElem.removeChild( this.last.elem );
+			// this.parentState.stageElem.removeChild( this.last.elem );
+			this.last.elem.remove();
 
 			this.parentState.boardTiles.collection[ this.last.col + ( this.last.row * this.parentState.cols ) ].classes.pressed = 2;
 
@@ -152,11 +153,12 @@ class Snake {
 					this.updateTickMax -= this.updateTickChange;
 				}
 				this.parentState.score++;
-				this.parentState.scoreElem.htm(this.parentState.score);
+				this.parentState.scoreElem.html(this.parentState.score);
 				this.justAteTick = this.justAteTickMax;
 
 				this.parentState.food.eaten = 1;
-				this.parentState.stageElem.removeChild( this.parentState.food.tile.elem );
+				// this.parentState.stageElem.removeChild( this.parentState.food.tile.elem );
+				this.parentState.food.tile.elem.remove();
 
 				var _this = this;
 				
@@ -169,7 +171,7 @@ class Snake {
 
 			// check death by eating self
 			if( this.deathFlag ) {
-				g.setState( 'play' );
+				game.setState( 'play' );
 			}
 		}
 

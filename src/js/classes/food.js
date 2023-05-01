@@ -29,7 +29,7 @@ class Food {
 				}
 			}
 		}
-		var newTile = empty[ g.util.randInt( 0, empty.length - 1 ) ];
+		var newTile = empty[ Util.randInt( 0, empty.length - 1 ) ];
 		this.tile.col = newTile.x;
 		this.tile.row = newTile.y;
 	}

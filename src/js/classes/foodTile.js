@@ -13,9 +13,9 @@ class FoodTile {
 		this.scale = 1;
 		this.hue = 100;
 		this.opacity = 0;
-		this.elem = document.createElement( 'div' );
-		this.elem.style.position = 'absolute';
-		this.parentState.stageElem.appendChild( this.elem );
+		
+		let div = $(`<div style="position: absolute;"></div>`)[0];
+		this.elem = this.parentState.stageElem.append(div);
 	}
 
 	update() {
@@ -41,13 +41,15 @@ class FoodTile {
 	};
 
 	render() {
-		this.elem.style.left = this.x + 'px';
-		this.elem.style.top = this.y + 'px';
-		this.elem.style.width = this.w + 'px';
-		this.elem.style.height = this.h + 'px';
-		this.elem.style[ 'transform' ] = 'translateZ(0) scale(' + this.scale + ')';
-		this.elem.style.backgroundColor = 'hsla(' + this.hue + ', 100%, 60%, 1)';
-		this.elem.style.boxShadow = '0 0 ' + this.blur + 'px hsla(' + this.hue + ', 100%, 60%, 1)';
-		this.elem.style.opacity = this.opacity;
+		this.elem.css({
+			left: this.x + "px",
+			top: this.y + "px",
+			width: this.w + "px",
+			height: this.h + "px",
+			transform: "translateZ(0) scale(" + this.scale + ")",
+			backgroundColor: "hsla(" + this.hue + ", 100%, 60%, 1)",
+			boxShadow: "0 0 " + this.blur + "px hsla(" + this.hue + ", 100%, 60%, 1)",
+			opacity: this.opacity,
+		});
 	};
 }
