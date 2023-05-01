@@ -1,0 +1,81 @@
+
+background: #000;
+
+.score {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	right: 8px;
+	bottom: 8px;
+	color: #fff;
+	font: 100%/1.5 sans-serif;
+	z-index: 2;
+}
+
+.state {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	right: 8px;
+	bottom: 8px;
+	background: radial-gradient(#333, #111);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: #fff;
+	font: 100%/1.5 sans-serif;
+
+	.stage {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.tile {
+		background: rgba(0, 0, 0, 0.15);
+		position: absolute;
+		transition-property:
+			background,
+			box-shadow,
+			opacity,
+			transform;
+		transform: translateZ(0);
+		transition-duration: 3000ms;
+
+		&.path:before {
+			opacity: 1;
+		}
+
+		&.up:before {
+			border-bottom: 4px inset rgba(255, 255, 255, 0.15);
+			border-left: 4px solid transparent;
+			border-right: 4px solid transparent;
+		}
+
+		&.down:before {
+			border-top: 4px inset rgba(255, 255, 255, 0.15);
+			border-left: 4px solid transparent;
+			border-right: 4px solid transparent;
+		}
+
+		&.left:before { 
+			border-right: 4px inset rgba(255, 255, 255, 0.15);
+			border-top: 4px solid transparent;
+			border-bottom: 4px solid transparent;
+		}
+
+		&.right:before { 
+			border-left: 4px inset rgba(255, 255, 255, 0.15);
+			border-top: 4px solid transparent;
+			border-bottom: 4px solid transparent;
+		}
+
+		&.pressed {
+			background: rgba(0, 0, 0, 0.3);
+			box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+			transition-duration: 0ms;
+		}
+	}
+}
