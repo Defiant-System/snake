@@ -27,7 +27,8 @@ const snake = {
 		game.step();
 	},
 	dispatch(event) {
-		let _this = game.currentState(),
+		let APP = snake,
+			_this = game.currentState(),
 			value;
 		// console.log(event);
 		switch (event.type) {
@@ -40,8 +41,10 @@ const snake = {
 					case "left":  _this.keys.left = 1; break;
 					case "right": _this.keys.right = 1; break;
 					case "p":
-						value = game.state === "play" ? "pause" : "play";
-						game.setState(value);
+						value = game.state === "play";
+						game.setState(value ? "pause" : "play");
+
+						APP.content.toggleClass("show-game-over", !value);
 						break;
 				}
 				break;

@@ -5,8 +5,8 @@
 		<meta name="author" value="Jack Rugile" namespace="ant" ported="Hakan Bilgin"/>
 		<meta name="license" value="AGPL-3.0"/>
 		<meta name="repository" value="https://github.com/Defiant-System/snake"/>
-		<meta name="width" value="750"/>
-		<meta name="height" value="436"/>
+		<meta name="width" value="744"/>
+		<meta name="height" value="432"/>
 		<meta name="top" value="320"/>
 		<meta name="left" value="150"/>
 		<meta name="minimize"/>

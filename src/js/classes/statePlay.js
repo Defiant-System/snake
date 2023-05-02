@@ -5,7 +5,6 @@ class StatePlay {
 	}
 
 	init() {
-		this.scoreElem = window.find(".score");
 		this.stageElem = window.find(".stage");
 		this.dimLong = 28;
 		this.dimShort = 16;
@@ -14,7 +13,7 @@ class StatePlay {
 		this.keys = {}
 		this.foodCreateTimeout = null;
 		this.score = 0;
-		this.scoreElem.html(this.score);
+		this.setScore();
 		this.time = new Time();
 		this.getDimensions();
 		if( this.winWidth < this.winHeight ) {
@@ -35,6 +34,10 @@ class StatePlay {
 		this.food = new Food({
 			parentState: this
 		});
+	}
+
+	setScore(score) {
+		window.title = `Snake - Score: ${this.score}`;
 	}
 
 	getDimensions() {
@@ -60,14 +63,15 @@ class StatePlay {
 
 		_this.tileWidth = ~~( _this.stageWidth / _this.cols );
 		_this.tileHeight = ~~( _this.stageHeight / _this.rows );
-		_this.dimAvg = ( _this.activeWidth + _this.activeHeight ) / 2;
-		_this.spacing = Math.max( 1, ~~( _this.dimAvg * 0.0025 ) );
+		// _this.dimAvg = ( _this.activeWidth + _this.activeHeight ) / 2;
+		// _this.spacing = Math.max( 1, ~~( _this.dimAvg * 0.0025 ) );
+		_this.spacing = 1;
 
-		_this.stageElem.css({
-			height: _this.stageHeight,
-			width: _this.stageWidth,
-			marginTop: ( -_this.stageHeight / 2 ) + _this.headerHeight / 2,
-		});
+		// _this.stageElem.css({
+		// 	height: _this.stageHeight,
+		// 	width: _this.stageWidth,
+		// 	marginTop: ( -_this.stageHeight / 2 ) + _this.headerHeight / 2,
+		// });
 
 		_this.boardTiles.each( "updateDimensions" );
 		_this.snake !== undefined && _this.snake.updateDimensions();
