@@ -9,7 +9,7 @@ class StatePlay {
 		this.stageElem = window.find(".stage");
 		this.dimLong = 28;
 		this.dimShort = 16;
-		this.padding = 0;
+		this.margin = 8;
 		this.boardTiles = new Group();
 		this.keys = {}
 		this.foodCreateTimeout = null;
@@ -28,7 +28,6 @@ class StatePlay {
 		this.grid = new Grid( this.cols, this.rows );
 		this.resize();
 		this.createBoardTiles();
-		this.bindEvents();
 
 		this.snake = new Snake({
 			parentState: this
@@ -41,15 +40,14 @@ class StatePlay {
 	getDimensions() {
 		this.winWidth = window.innerWidth;
 		this.winHeight = window.innerHeight;
-		this.activeWidth = this.winWidth - ( this.winWidth * this.padding );
-		this.activeHeight = this.winHeight - ( this.winHeight * this.padding );
+		this.activeWidth = this.winWidth - ( this.margin * 2 );
+		this.activeHeight = this.winHeight - ( this.margin * 2 );
 	}
 
 	resize() {
 		var _this = game.currentState();
 
 		_this.getDimensions();
-
 		_this.stageRatio = _this.rows / _this.cols;
 
 		if( _this.activeWidth > _this.activeHeight / _this.stageRatio ) {
@@ -93,54 +91,6 @@ class StatePlay {
 		}
 	}
 
-	// upOn() {
-	// 	game.currentState().keys.up = 1;
-	// }
-
-	// downOn() {
-	// 	game.currentState().keys.down = 1;
-	// }
-
-	// rightOn() {
-	// 	game.currentState().keys.right = 1;
-	// }
-
-	// leftOn() {
-	// 	game.currentState().keys.left = 1;
-	// }
-
-	// upOff() {
-	// 	game.currentState().keys.up = 0;
-	// }
-
-	// downOff() {
-	// 	game.currentState().keys.down = 0;
-	// }
-
-	// rightOff() {
-	// 	game.currentState().keys.right = 0;
-	// }
-
-	// leftOff() {
-	// 	game.currentState().keys.left = 0;
-	// }
-
-	// keydown( e ) {
-	// 	e.preventDefault();
-	// 	var e = ( e.keyCode ? e.keyCode : e.which ),
-	// 		_this = game.currentState();
-	// 	if( e === 38 || e === 87 ) { _this.upOn(); }
-	// 	if( e === 39 || e === 68 ) { _this.rightOn(); }
-	// 	if( e === 40 || e === 83 ) { _this.downOn(); }
-	// 	if( e === 37 || e === 65 ) { _this.leftOn(); }
-	// }
-
-	bindEvents() {
-		var _this = game.currentState();
-		// window.addEventListener( "keydown", _this.keydown, false );
-		// window.addEventListener( "resize", _this.resize, false );
-	}
-
 	step() {
 		this.boardTiles.each( "update" );
 		this.boardTiles.each( "render" );
@@ -152,8 +102,6 @@ class StatePlay {
 	}
 
 	exit() {
-		// window.removeEventListener( "keydown", this.keydown, false );
-		// window.removeEventListener( "resize", this.resize, false );
 		this.stageElem.html("");
 		this.grid.tiles = null;
 		this.time = null;

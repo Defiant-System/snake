@@ -1,5 +1,6 @@
 
 @import "./modules/misc.js"
+@import "./modules/test.js"
 
 @import "./classes/group.js"
 @import "./classes/time.js"

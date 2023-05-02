@@ -9,11 +9,6 @@ let Util = {
 	isset( prop ) {
 		return typeof prop != 'undefined';
 	},
-	log() {
-		if( Util.isset( Util.config ) && Util.config.debug && window.console ){
-			console.log( Array.prototype.slice.call( arguments ) );
-		}
-	},
 };
 
 // Math
