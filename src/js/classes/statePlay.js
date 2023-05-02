@@ -5,7 +5,7 @@ class StatePlay {
 	}
 
 	init() {
-		this.stageElem = window.find(".stage");
+		this.stageElem = window.find(".stage").html("");
 		this.dimLong = 28;
 		this.dimShort = 16;
 		this.margin = 8;
@@ -63,15 +63,7 @@ class StatePlay {
 
 		_this.tileWidth = ~~( _this.stageWidth / _this.cols );
 		_this.tileHeight = ~~( _this.stageHeight / _this.rows );
-		// _this.dimAvg = ( _this.activeWidth + _this.activeHeight ) / 2;
-		// _this.spacing = Math.max( 1, ~~( _this.dimAvg * 0.0025 ) );
 		_this.spacing = 1;
-
-		// _this.stageElem.css({
-		// 	height: _this.stageHeight,
-		// 	width: _this.stageWidth,
-		// 	marginTop: ( -_this.stageHeight / 2 ) + _this.headerHeight / 2,
-		// });
 
 		_this.boardTiles.each( "updateDimensions" );
 		_this.snake !== undefined && _this.snake.updateDimensions();
@@ -106,8 +98,8 @@ class StatePlay {
 	}
 
 	exit() {
-		this.stageElem.html("");
-		this.grid.tiles = null;
-		this.time = null;
+		// this.stageElem.html("");
+		// this.grid.tiles = null;
+		// this.time = null;
 	}
 }

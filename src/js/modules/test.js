@@ -1,7 +1,8 @@
 
 let Test = {
 	init() {
-		snake.dispatch({ type: "window.keystroke", char: "p" });
+		// snake.dispatch({ type: "window.keystroke", char: "p" });
+
 	}
 };
 

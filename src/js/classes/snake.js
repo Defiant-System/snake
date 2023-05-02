@@ -6,8 +6,7 @@ class Snake {
 		this.currDir = this.dir;
 		this.tiles = [];
 
-		var start = { x: 15, y: 3, len: 14 };
-
+		var start = { x: 15, y: 3, len: 5 };
 		for( var i = 0; i < start.len; i++ ) {
 			this.tiles.push( new SnakeTile({
 				parentState: this.parentState,
@@ -174,7 +173,7 @@ class Snake {
 
 			// check death by eating self
 			if( this.deathFlag ) {
-				game.setState( "play" );
+				game.setState( "over" );
 			}
 		}
 

@@ -3,31 +3,39 @@ class GameManager {
 	constructor() {
 		this.time = new Time();
 		this.states = {};
-		this.config = {
-			title: "Snakely",
-		};
 	}
 
 	addState(state) {
-		this.states[ state.name ] = state;
+		this.states[state.name] = state;
 	}
 
 	setState(name) {
+		let APP = snake,
+			currState = this.state;
+
 		this.state = name;
+
 		switch (this.state) {
+			case "new":
+				if (this.state === "play") return;
+				APP.content.removeClass("show-game-over show-paused");
+				this.state = "play";
+				this.states.play.init();
+				this.step();
+				break;
+			case "over":
+				APP.content.addClass("show-game-over");
+				this.states.play.exit();
+				break;
 			case "pause":
-				// todo !
-				break;
-			case "play":
-				if (this.states[this.state].stageElem) {
-					// resume
-					this.step();
+				if (currState === "play") {
+					APP.content.addClass("show-paused");
 				} else {
-					this.states[this.state].init();
+					APP.content.removeClass("show-game-over show-paused");
+					// resume
+					this.state = "play";
+					this.step();
 				}
-				break;
-			case "dispose":
-				this.states[this.state].exit();
 				break;
 		}
 	}
@@ -37,7 +45,7 @@ class GameManager {
 	}
 
 	step() {
-		if (!this.state || this.state === "pause") return;
+		if (!this.state || this.state !== "play") return;
 
 		requestAnimationFrame(this.step.bind(this));
 		this.states[ this.state ].step();
