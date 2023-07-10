@@ -5,7 +5,8 @@ class StatePlay {
 	}
 
 	init() {
-		this.stageElem = window.find(".stage").html("");
+		this.cvs = window.find(".stage");
+		this.ctx = this.cvs[0].getContext("2d", { willReadFrequently: true });
 		this.dimLong = 28;
 		this.dimShort = 16;
 		this.margin = 8;
