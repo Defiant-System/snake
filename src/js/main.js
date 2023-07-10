@@ -20,13 +20,13 @@ const snake = {
 		// fast references
 		this.content = window.find("content");
 
-		game = new GameManager();
-		game.addState(new StatePlay());
-		game.setState("new");
+		// game = new GameManager();
+		// game.addState(new StatePlay());
+		// game.setState("new");
 	},
 	dispatch(event) {
 		let APP = snake,
-			_this = game.currentState();
+			_this = game ? game.currentState() : null;
 		// console.log(event);
 		switch (event.type) {
 			case "window.init":
