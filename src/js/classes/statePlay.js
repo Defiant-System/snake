@@ -90,11 +90,13 @@ class StatePlay {
 		this.cvs.attr({ width: this.activeWidth, height: this.activeHeight });
 
 		this.boardTiles.each("update");
-		this.boardTiles.each("render");
 		this.food.update();
-		this.food.render();
 		this.snake.update();
+
+		this.boardTiles.each("render");
+		this.food.render();
 		this.snake.render();
+		
 		this.time.update();
 	}
 

@@ -50,7 +50,8 @@ class BoardTile {
 
 	render() {
 		// prevents "transparent" snake body
-		if (this.parentState.grid.get(this.col, this.row) === "snake") return;
+		let tile = this.parentState.grid.get(this.col, this.row);
+		if (tile === "snake") return;
 
 		// paint grid cell
 		this.ctx.fillStyle = "rgba(0,0,0,.15)";
