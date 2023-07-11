@@ -3,6 +3,7 @@ class SnakeTile {
 	constructor(opt) {
 		this.parentState = opt.parentState;
 		this.parentGroup = opt.parentGroup;
+		this.ctx = opt.parentState.ctx;
 		this.col = opt.col;
 		this.row = opt.row;
 		this.x = opt.x;
@@ -16,9 +17,6 @@ class SnakeTile {
 		this.alpha = 1;
 		this.borderRadius = 0;
 		this.borderRadiusAmount = 0;
-
-		let div = $(`<div style="position: absolute;"></div>`)[0];
-		// this.elem = this.parentState.stageElem.append(div);
 	}
 
 	update(i) {
@@ -52,14 +50,7 @@ class SnakeTile {
 	}
 
 	render(i) {
-		// this.elem.css({
-		// 	left: this.x + "px",
-		// 	top: this.y + "px",
-		// 	width: this.w + "px",
-		// 	height: this.h + "px",
-		// 	backgroundColor: "rgba(255, 255, 255, " + this.alpha + ")",
-		// 	boxShadow: "0 0 " + this.blur + "px #fff",
-		// 	borderRadius: this.borderRadius,
-		// });
+		this.ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+		this.ctx.fillRect(this.x, this.y, this.w, this.h);
 	}
 }

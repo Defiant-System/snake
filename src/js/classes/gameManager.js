@@ -47,7 +47,7 @@ class GameManager {
 	step() {
 		if (!this.state || this.state !== "play") return;
 
-		// requestAnimationFrame(this.step.bind(this));
+		requestAnimationFrame(this.step.bind(this));
 		this.states[ this.state ].step();
 		this.time.update();
 	}

@@ -7,7 +7,7 @@ class Grid {
 		for( var x = 0; x < cols; x++ ) {
 			this.tiles[ x ] = [];
 			for( var y = 0; y < rows; y++ ) {
-				this.tiles[ x ].push( 'empty' );
+				this.tiles[ x ].push( "empty" );
 			}
 		}
 	}
