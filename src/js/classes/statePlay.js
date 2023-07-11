@@ -62,7 +62,6 @@ class StatePlay {
 		_this.tileHeight = ~~( _this.stageHeight / _this.rows );
 		_this.spacing = 1;
 
-		_this.boardTiles.each( "updateDimensions" );
 		_this.snake !== undefined && _this.snake.updateDimensions();
 		_this.food !== undefined && _this.food.updateDimensions();
 	}
@@ -90,12 +89,12 @@ class StatePlay {
 		// reset canvas / board
 		this.cvs.attr({ width: this.activeWidth, height: this.activeHeight });
 
-		this.boardTiles.each( "update" );
-		this.boardTiles.each( "render" );
-		this.snake.update();
-		this.snake.render();
+		this.boardTiles.each("update");
+		this.boardTiles.each("render");
 		this.food.update();
 		this.food.render();
+		this.snake.update();
+		this.snake.render();
 		this.time.update();
 	}
 

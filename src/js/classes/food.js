@@ -34,10 +34,6 @@ class Food {
 		this.tile.row = newTile.y;
 	}
 
-	updateDimensions() {
-		this.tile.updateDimensions();
-	}
-
 	update() {
 		// update food tile
 		this.tile.update();

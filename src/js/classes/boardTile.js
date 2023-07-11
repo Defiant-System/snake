@@ -28,8 +28,8 @@ class BoardTile {
 
 	update() {
 		for (var k in this.classes) {
-			if (this.classes[ k ]) {
-				this.classes[ k ]--;
+			if (this.classes[ k ] > 0) {
+				this.classes[ k ] -= .025;
 			}
 		}
 
@@ -49,9 +49,14 @@ class BoardTile {
 	}
 
 	render() {
+		// prevents "transparent" snake body
+		if (this.parentState.grid.get(this.col, this.row) === "snake") return;
+
+		// paint grid cell
 		this.ctx.fillStyle = "rgba(0,0,0,.15)";
 		this.ctx.fillRect(this.x, this.y, this.w, this.h);
 		
+		// paind path
 		if (this.classes.path) {
 			this.ctx.save();
 			this.ctx.fillStyle = "#444";
@@ -90,21 +95,22 @@ class BoardTile {
 					this.ctx.fill();
 					break;
 			}
-
 			this.ctx.restore();
 		}
 
-		if (!!this.classes.pressed) {
-			this.ctx.save();
+		// paint pressed snake path
+		if (this.classes.pressed > 0) {
+			this.ctx.fillStyle = `rgba(0,0,0,${this.classes.pressed * .1})`;
+			this.ctx.fillRect(this.x, this.y, this.w, this.h);
 
+			this.ctx.save();
 			this.ctx.rect(this.x, this.y, this.w, this.h);
 			this.ctx.clip();
 
-			this.ctx.filter = "blur(2px)";
+			this.ctx.filter = "blur(4px)";
 			this.ctx.lineWidth = 3;
-			this.ctx.strokeStyle = "rgba(0,0,0,.5)";
+			this.ctx.strokeStyle = `rgba(10,10,10,${this.classes.pressed * .75})`;
 			this.ctx.strokeRect(this.x, this.y, this.w, this.h);
-
 			this.ctx.restore();
 		}
 
