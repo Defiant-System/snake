@@ -33,7 +33,7 @@ class Snake {
 		var i = this.tiles.length;
 
 		while( i--) {
-			this.parentState.grid.set( this.tiles[ i ].col, this.tiles[ i ].row, "snake" );
+			this.parentState.grid.set( this.tiles[i].col, this.tiles[i].row, "snake" );
 		}
 	}
 
@@ -70,10 +70,10 @@ class Snake {
 			this.tiles.unshift( new SnakeTile({
 				parentState: this.parentState,
 				parentGroup: this.tiles,
-				col: this.tiles[ 0 ].col,
-				row: this.tiles[ 0 ].row,
-				x: this.tiles[ 0 ].col * this.parentState.tileWidth,
-				y: this.tiles[ 0 ].row * this.parentState.tileHeight,
+				col: this.tiles[0].col,
+				row: this.tiles[0].row,
+				x: this.tiles[0].col * this.parentState.tileWidth,
+				y: this.tiles[0].row * this.parentState.tileHeight,
 				w: this.parentState.tileWidth - this.parentState.spacing,
 				h: this.parentState.tileHeight - this.parentState.spacing
 			}));
@@ -81,59 +81,52 @@ class Snake {
 			// this.parentState.stageElem.removeChild( this.last.elem );
 			// this.last.elem.remove();
 
-			this.parentState.boardTiles.collection[ this.last.col + ( this.last.row * this.parentState.cols ) ].classes.pressed = 2;
+			this.parentState.boardTiles.collection[this.last.col + ( this.last.row * this.parentState.cols )].classes.pressed = 2;
 
 			// sync data grid of the play state
 			var i = this.tiles.length;
 
 			while( i--) {
-				this.parentState.grid.set( this.tiles[ i ].col, this.tiles[ i ].row, "snake" );
+				this.parentState.grid.set(this.tiles[i].col, this.tiles[i].row, "snake");
 			}
-			this.parentState.grid.set( this.last.col, this.last.row, "empty" );
-
+			this.parentState.grid.set(this.last.col, this.last.row, "empty");
 
 			// move the snake"s head
-			if ( this.dir == "n") {
-				this.currDir = "n";
-				this.tiles[ 0 ].row -= 1;
-			} else if (this.dir == "s") {
-				this.currDir = "s";
-				this.tiles[ 0 ].row += 1;
-			} else if (this.dir == "w") {
-				this.currDir = "w";
-				this.tiles[ 0 ].col -= 1;
-			} else if (this.dir == "e") {
-				this.currDir = "e";
-				this.tiles[ 0 ].col += 1;
+			this.currDir = this.dir;
+			switch (this.dir) {
+				case "n": this.tiles[0].row -= 1; break;
+				case "s": this.tiles[0].row += 1; break;
+				case "w": this.tiles[0].col -= 1; break;
+				case "e": this.tiles[0].col += 1; break;
 			}
 
 			// wrap walls
 			this.wallFlag = false;
-			if (this.tiles[ 0 ].col >= this.parentState.cols) {
-				this.tiles[ 0 ].col = 0;
+			if (this.tiles[0].col >= this.parentState.cols) {
+				this.tiles[0].col = 0;
 				this.wallFlag = true;
 			}
-			if (this.tiles[ 0 ].col < 0) {
-				this.tiles[ 0 ].col = this.parentState.cols - 1;
+			if (this.tiles[0].col < 0) {
+				this.tiles[0].col = this.parentState.cols - 1;
 				this.wallFlag = true;
 			}
-			if (this.tiles[ 0 ].row >= this.parentState.rows) {
-				this.tiles[ 0 ].row = 0;
+			if (this.tiles[0].row >= this.parentState.rows) {
+				this.tiles[0].row = 0;
 				this.wallFlag = true;
 			}
-			if (this.tiles[ 0 ].row < 0) {
-				this.tiles[ 0 ].row = this.parentState.rows - 1;
+			if (this.tiles[0].row < 0) {
+				this.tiles[0].row = this.parentState.rows - 1;
 				this.wallFlag = true;
 			}
 
 			// check death by eating self
-			if (this.parentState.grid.get( this.tiles[ 0 ].col, this.tiles[ 0 ].row ) == "snake") {
+			if (this.parentState.grid.get( this.tiles[0].col, this.tiles[0].row ) == "snake") {
 				this.deathFlag = 1;
-				clearTimeout( this.foodCreateTimeout );
+				clearTimeout(this.foodCreateTimeout);
 			}
 
 			// check eating of food
-			if (this.parentState.grid.get( this.tiles[ 0 ].col, this.tiles[ 0 ].row ) == "food") {
+			if (this.parentState.grid.get( this.tiles[0].col, this.tiles[0].row ) == "food") {
 				this.tiles.push( new SnakeTile({
 					parentState: this.parentState,
 					parentGroup: this.tiles,
@@ -150,30 +143,21 @@ class Snake {
 				this.parentState.score++;
 				this.parentState.setScore();
 				this.justAteTick = this.justAteTickMax;
-
 				this.parentState.food.eaten = 1;
-				// this.parentState.stageElem.removeChild( this.parentState.food.tile.elem );
-				// this.parentState.food.tile.elem.remove();
-
-				var _this = this;
-				
-				this.foodCreateTimeout = setTimeout( function() {
-					_this.parentState.food = new Food({
-						parentState: _this.parentState
-					});
-				}, 300);
+				this.foodCreateTimeout = setTimeout(() =>
+					this.parentState.food = new Food({ parentState: this.parentState }), 300);
 			}
 
 			// check death by eating self
 			if (this.deathFlag) {
-				game.setState( "over" );
+				game.setState("over");
 			}
 		}
 
 		// update individual snake tiles
 		var i = this.tiles.length;
 		while( i--) {
-			this.tiles[ i ].update( i );
+			this.tiles[i].update( i );
 		}
 
 		if (this.justAteTick > 0) {
@@ -186,8 +170,8 @@ class Snake {
 	render() {
 		// render individual snake tiles
 		var i = this.tiles.length;
-		while( i--) {
-			this.tiles[ i ].render( i );
+		while(i--) {
+			this.tiles[i].render(i);
 		}
 	}
 }
