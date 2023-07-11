@@ -4,6 +4,10 @@
 
 
 @import "./classes/boardTile.js"
+@import "./classes/snake.js"
+@import "./classes/snakeTile.js"
+@import "./classes/food.js"
+@import "./classes/foodTile.js"
 @import "./classes/grid.js"
 @import "./classes/group.js"
 @import "./classes/time.js"

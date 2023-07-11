@@ -29,12 +29,8 @@ class StatePlay {
 		this.resize();
 		this.createBoardTiles();
 
-		this.snake = new Snake({
-			parentState: this
-		});
-		this.food = new Food({
-			parentState: this
-		});
+		this.snake = new Snake({ parentState: this });
+		this.food = new Food({ parentState: this });
 	}
 
 	setScore(score) {
@@ -77,6 +73,8 @@ class StatePlay {
 				this.boardTiles.add( new BoardTile({
 					parentState: this,
 					parentGroup: this.boardTiles,
+					tW: this.tileWidth,
+					tH: this.tileHeight,
 					col: x,
 					row: y,
 					x: x * this.tileWidth,
@@ -89,6 +87,9 @@ class StatePlay {
 	}
 
 	step() {
+		// reset canvas / board
+		this.cvs.attr({ width: this.activeWidth, height: this.activeHeight });
+
 		this.boardTiles.each( "update" );
 		this.boardTiles.each( "render" );
 		this.snake.update();
