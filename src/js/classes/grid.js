@@ -4,9 +4,9 @@ class Grid {
 		this.cols = cols;
 		this.rows = rows;
 		this.tiles = [];
-		for( var x = 0; x < cols; x++ ) {
+		for (let x = 0; x < cols; x++) {
 			this.tiles[x] = [];
-			for( var y = 0; y < rows; y++ ) {
+			for (let y = 0; y < rows; y++) {
 				this.tiles[x].push( "empty" );
 			}
 		}
@@ -18,5 +18,11 @@ class Grid {
 
 	set(x, y, val) {
 		this.tiles[x][y] = val;
+	}
+
+	distance(p1, p2) {
+		let dx = p1[0] - p2[0];
+        let dy = p1[1] - p2[1];
+		return Math.sqrt(dx * dx + dy * dy);
 	}
 }

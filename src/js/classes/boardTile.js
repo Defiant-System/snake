@@ -55,46 +55,34 @@ class BoardTile {
 		// paint grid cell
 		this.ctx.fillStyle = "rgba(0,0,0,.15)";
 		this.ctx.fillRect(this.x, this.y, this.w, this.h);
+
+		let triangle = poly => {
+				this.ctx.translate(this.x, this.y);
+				this.ctx.beginPath();
+				this.ctx.moveTo(...poly[0]);
+				this.ctx.lineTo(...poly[1]);
+				this.ctx.lineTo(...poly[2]);
+				this.ctx.fill();
+			};
 		
 		// paind path
 		if (this.classes.path) {
+			let food = this.parentState.food,
+				foodPos = [food.tile.col, food.tile.row],
+				thisPos = [this.col, this.row],
+				distance = food.pulseTick - this.parentState.grid.distance(foodPos, thisPos),
+				alpha = distance < 5 && distance > 0 ? distance / 4 : .2;
+
 			this.ctx.save();
-			this.ctx.fillStyle = "#444";
+			this.ctx.fillStyle = `rgba(120,120,120,${alpha})`;
 
 			switch (true) {
-				case !!this.classes.up:
-					this.ctx.translate(this.x, this.y);
-					this.ctx.beginPath();
-					this.ctx.moveTo(8, 15);
-					this.ctx.lineTo(12, 10);
-					this.ctx.lineTo(16, 15);
-					this.ctx.fill();
-					break;
-				case !!this.classes.down:
-					this.ctx.translate(this.x, this.y);
-					this.ctx.beginPath();
-					this.ctx.moveTo(16, 15);
-					this.ctx.lineTo(12, 10);
-					this.ctx.lineTo(8, 15);
-					this.ctx.fill();
-					break;
-				case !!this.classes.left:
-					this.ctx.translate(this.x, this.y);
-					this.ctx.beginPath();
-					this.ctx.moveTo(15, 8);
-					this.ctx.lineTo(10, 12);
-					this.ctx.lineTo(15, 16);
-					this.ctx.fill();
-					break;
-				case !!this.classes.right:
-					this.ctx.translate(this.x, this.y);
-					this.ctx.beginPath();
-					this.ctx.moveTo(10, 8);
-					this.ctx.lineTo(15, 12);
-					this.ctx.lineTo(10, 16);
-					this.ctx.fill();
-					break;
+				case !!this.classes.up: triangle([[8,15], [12,10], [16,15]]); break;
+				case !!this.classes.down: triangle([[16,10], [12,15], [8,10]]); break;
+				case !!this.classes.left: triangle([[15,8], [10,12], [15,16]]); break;
+				case !!this.classes.right: triangle([[10,8], [15,12], [10,16]]); break;
 			}
+
 			this.ctx.restore();
 		}
 

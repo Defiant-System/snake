@@ -78,10 +78,6 @@ class Snake {
 				h: this.parentState.tileHeight - this.parentState.spacing
 			}));
 			this.last = this.tiles.pop();
-			// this.parentState.stageElem.removeChild( this.last.elem );
-			// this.last.elem.remove();
-
-			this.parentState.boardTiles.collection[this.last.col + ( this.last.row * this.parentState.cols )].classes.pressed = 2;
 
 			// sync data grid of the play state
 			var i = this.tiles.length;
@@ -90,6 +86,7 @@ class Snake {
 				this.parentState.grid.set(this.tiles[i].col, this.tiles[i].row, "snake");
 			}
 			this.parentState.grid.set(this.last.col, this.last.row, "empty");
+			this.parentState.boardTiles.collection[this.last.col + ( this.last.row * this.parentState.cols )].classes.pressed = 2;
 
 			// move the snake"s head
 			this.currDir = this.dir;
