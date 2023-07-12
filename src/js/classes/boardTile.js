@@ -50,12 +50,13 @@ class BoardTile {
 
 	render() {
 		// prevents "transparent" snake body
-		let tile = this.parentState.grid.get(this.col, this.row);
-		if (tile === "snake") return;
+		let tile = this.parentState.grid.get(this.col, this.row),
+			isDead = this.parentState.snake.deathFlag;
 
 		// paint grid cell
 		this.ctx.fillStyle = "rgba(0,0,0,.15)";
 		this.ctx.fillRect(this.x, this.y, this.w, this.h);
+		if (tile === "snake" || isDead) return;
 
 		let triangle = poly => {
 				this.ctx.translate(this.x, this.y);

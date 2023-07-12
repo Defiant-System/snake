@@ -34,6 +34,8 @@ class FoodTile {
 		let d1 = 7 * this.scale,
 			d2 = d1 * 2,
 			opacity = this.opacity + .5;
+		// exit if dead
+		if (this.parentState.snake.deathFlag) return;
 
 		this.ctx.fillStyle = `rgba(0, 255, 0, ${opacity})`;
 		this.ctx.fillRect(this.x+d1, this.y+d1, this.w-d2, this.h-d2);

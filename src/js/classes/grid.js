@@ -20,9 +20,9 @@ class Grid {
 		this.tiles[x][y] = val;
 	}
 
-	distance(p1, p2) {
-		let dx = p1[0] - p2[0];
-        let dy = p1[1] - p2[1];
+	distance(tile1, tile2) {
+		let dx = tile1[0] - tile2[0];
+        let dy = tile1[1] - tile2[1];
 		return Math.sqrt(dx * dx + dy * dy);
 	}
 }

@@ -6,13 +6,13 @@ class Group {
 	}
 
 	add(item) {
-		this.collection.push( item );
+		this.collection.push(item);
 		this.length++;
 	}
 
 	remove(index) {
-		if( index < this.length ) {
-			this.collection.splice( index, 1 );
+		if (index < this.length) {
+			this.collection.splice(index, 1);
 			this.length--;
 		}
 	}
@@ -25,14 +25,14 @@ class Group {
 	each(action, asc) {
 		var asc = asc || 0,
 			i;
-		if( asc ) {
-			for( i = 0; i < this.length; i++ ) {
-				this.collection[ i ][ action ]( i );
+		if (asc) {
+			for(i = 0; i < this.length; i++) {
+				this.collection[i][action](i);
 			}
 		} else {
 			i = this.length;
-			while( i-- ) {
-				this.collection[ i ][ action ]( i );
+			while(i--) {
+				this.collection[i][action](i);
 			}
 		}
 	}

@@ -18,7 +18,7 @@ class Restart {
 		
 		let tile = Play.snake.tiles.pop();
 		Play.grid.set(tile.col, tile.row, "empty");
-		Play.boardTiles.collection[tile.col + ( tile.row * Play.cols )].classes.pressed = 2;
+		Play.boardTiles.collection[tile.col + (tile.row * Play.cols)].classes.pressed = 2;
 		
 		Play.boardTiles.each("update");
 		Play.food.update();

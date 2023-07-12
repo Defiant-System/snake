@@ -26,10 +26,11 @@ class Food {
 			for (var y = 0; y < this.parentState.rows; y++) {
 				var tile = this.parentState.grid.get(x, y);
 				if (tile == "empty") {
-					empty.push({ x: x, y: y } );
+					empty.push({ x, y });
 				}
 			}
 		}
+
 		var newTile = empty[ Util.randInt(0, empty.length - 1) ];
 		// newTile = {x: 14, y: 8};
 		this.tile.col = newTile.x;
