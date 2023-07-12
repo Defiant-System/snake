@@ -3,6 +3,17 @@ class GameManager {
 	constructor() {
 		this.time = new Time();
 		this.states = {};
+
+		let that = this;
+		this.fpsControl = new karaqu.FpsControl({
+			fps: 30,
+			callback() {
+				if (!that.state || that.state !== "play") return this.stop();
+				
+				that.states[that.state].step();
+				that.time.update();
+			}
+		});
 	}
 
 	addState(state) {
@@ -21,7 +32,10 @@ class GameManager {
 				// APP.content.removeClass("show-game-over show-paused");
 				this.state = "play";
 				this.states.play.init();
-				this.step();
+				// this.step();
+
+				this.fpsControl.start();
+
 				break;
 			case "over":
 				// APP.content.addClass("show-game-over");
@@ -34,7 +48,9 @@ class GameManager {
 					// APP.content.removeClass("show-game-over show-paused");
 					// resume
 					this.state = "play";
-					this.step();
+					// this.step();
+
+					this.fpsControl.stop();
 				}
 				break;
 		}
@@ -44,11 +60,11 @@ class GameManager {
 		return this.states[this.state];
 	}
 
-	step() {
-		if (!this.state || this.state !== "play") return;
+	// step() {
+	// 	if (!this.state || this.state !== "play") return;
 
-		requestAnimationFrame(this.step.bind(this));
-		this.states[ this.state ].step();
-		this.time.update();
-	}
+	// 	// requestAnimationFrame(this.step.bind(this));
+	// 	this.states[this.state].step();
+	// 	this.time.update();
+	// }
 }

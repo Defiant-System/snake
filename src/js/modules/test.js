@@ -3,6 +3,7 @@ let Test = {
 	init() {
 		// snake.dispatch({ type: "window.keystroke", char: "p" });
 
+		// setTimeout(() => game.setState("over"), 3000);
 	}
 };
 

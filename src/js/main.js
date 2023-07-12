@@ -28,7 +28,7 @@ const snake = {
 	},
 	dispatch(event) {
 		let APP = snake,
-			that = game ? game.currentState() : null;
+			Keys = game.states.play.keys;
 		// console.log(event);
 		switch (event.type) {
 			case "window.init":
@@ -36,19 +36,19 @@ const snake = {
 			case "window.keystroke":
 				switch (event.char) {
 					case "w":
-					case "up":    that.keys.up = 1; break;
+					case "up":    Keys.up = 1; break;
 					case "s":
-					case "down":  that.keys.down = 1; break;
+					case "down":  Keys.down = 1; break;
 					case "a":
-					case "left":  that.keys.left = 1; break;
+					case "left":  Keys.left = 1; break;
 					case "d":
-					case "right": that.keys.right = 1; break;
-					// case "n":
-					// 	game.setState("new");
-					// 	break;
-					// case "g":
-					// 	game.setState("over");
-					// 	break;
+					case "right": Keys.right = 1; break;
+					case "n":
+						game.setState("new");
+						break;
+					case "g":
+						game.setState("over");
+						break;
 					case "p":
 						game.setState("pause");
 						break;
@@ -57,13 +57,13 @@ const snake = {
 			case "window.keyup":
 				switch (event.char) {
 					case "w":
-					case "up":    that.keys.up = 0; break;
+					case "up":    Keys.up = 0; break;
 					case "s":
-					case "down":  that.keys.down = 0; break;
+					case "down":  Keys.down = 0; break;
 					case "a":
-					case "left":  that.keys.left = 0; break;
+					case "left":  Keys.left = 0; break;
 					case "d":
-					case "right": that.keys.right = 0; break;
+					case "right": Keys.right = 0; break;
 				}
 				break;
 			case "open-help":

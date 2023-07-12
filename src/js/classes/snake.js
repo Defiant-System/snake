@@ -6,19 +6,26 @@ class Snake {
 		this.currDir = this.dir;
 		this.tiles = [];
 
-		var start = { x: 15, y: 3, len: 5 };
-		for (var i = 0; i < start.len; i++) {
+		let tail = [
+				[20, 15],[20, 14],[20, 13],[20, 12],[20, 11], [20, 10],[20, 9],[20, 8],[20, 7],[20, 6],[20, 5],[20, 4], 
+				[20, 3], [19, 3], [18, 3], [17, 3], [16, 3], [15, 3], [14, 3], [13, 3], [12, 3], [11, 3], [11, 4], [11, 5],
+				[11, 6], [12, 6], [13, 6], [14, 6], [15, 6], [16, 6],
+				// [11, 6], [12, 6], [13, 6], [14, 6], [15, 6],
+			];
+		while (tail.length) {
+			let [x, y] = tail.pop();
 			this.tiles.push( new SnakeTile({
 				parentState: this.parentState,
 				parentGroup: this.tiles,
-				col: start.x - i,
-				row: start.y,
-				x: ( start.x - i ) * opt.parentState.tileWidth,
-				y: start.y * opt.parentState.tileHeight,
+				col: x,
+				row: y,
+				x: x * opt.parentState.tileWidth,
+				y: y * opt.parentState.tileHeight,
 				w: opt.parentState.tileWidth - opt.parentState.spacing,
 				h: opt.parentState.tileHeight - opt.parentState.spacing
 			}));
 		}
+
 		this.last = 0;
 		this.updateTick = 10;
 		this.updateTickMax = this.updateTick;

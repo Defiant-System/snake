@@ -28,9 +28,6 @@ class StatePlay {
 		this.grid = new Grid( this.cols, this.rows );
 		this.resize();
 		this.createBoardTiles();
-
-		this.snake = new Snake({ parentState: this });
-		this.food = new Food({ parentState: this });
 	}
 
 	setScore(score) {
@@ -45,25 +42,24 @@ class StatePlay {
 	}
 
 	resize() {
-		var _this = game.currentState();
+		var that = game.currentState();
 
-		_this.getDimensions();
-		_this.stageRatio = _this.rows / _this.cols;
+		that.getDimensions();
+		that.stageRatio = that.rows / that.cols;
 
-		if( _this.activeWidth > _this.activeHeight / _this.stageRatio ) {
-			_this.stageHeight = _this.activeHeight;
-			_this.stageWidth = Math.floor( _this.stageHeight /_this.stageRatio );
+		if( that.activeWidth > that.activeHeight / that.stageRatio ) {
+			that.stageHeight = that.activeHeight;
+			that.stageWidth = Math.floor( that.stageHeight /that.stageRatio );
 		} else {
-			_this.stageWidth = _this.activeWidth;
-			_this.stageHeight = Math.floor( _this.stageWidth * _this.stageRatio );
+			that.stageWidth = that.activeWidth;
+			that.stageHeight = Math.floor( that.stageWidth * that.stageRatio );
 		}
 
-		_this.tileWidth = ~~( _this.stageWidth / _this.cols );
-		_this.tileHeight = ~~( _this.stageHeight / _this.rows );
-		_this.spacing = 1;
+		that.tileWidth = ~~( that.stageWidth / that.cols );
+		that.tileHeight = ~~( that.stageHeight / that.rows );
 
-		_this.snake !== undefined && _this.snake.updateDimensions();
-		_this.food !== undefined && _this.food.updateDimensions();
+		that.snake = new Snake({ parentState: that });
+		that.food = new Food({ parentState: that });
 	}
 
 	createBoardTiles() {

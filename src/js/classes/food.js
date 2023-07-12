@@ -16,7 +16,7 @@ class Food {
 		this.pulseTick = this.parentState.rows * 2;
 		this.birthTick = 1;
 		this.deathTick = 0;
-		this.pulseTickChange = 0.25;
+		this.pulseTickChange = 0.5;
 		this.birthTickChange = 0.025;
 	}
 
