@@ -5,8 +5,9 @@ class GameManager {
 		this.states = {};
 
 		let that = this;
-		this.fpsControl = new karaqu.FpsControl({
+		this.fpsControl = karaqu.FpsControl({
 			callback() {
+				console.log(1);
 				let state = that.states[that.state];
 				if (!state) return this.stop();
 
