@@ -37,6 +37,7 @@ class GameManager {
 				break;
 			case "restart":
 				this.states.restart.init();
+				this.fpsControl.start();
 				break;
 			case "pause":
 				if (currState === "play") {

@@ -1,5 +1,6 @@
 
 background: #000;
+overflow: visible;
 
 content {
 	position: absolute;
@@ -21,7 +22,7 @@ content {
 
 		.stage {
 			filter: blur(3px);
-			opacity: .5;
+			opacity: .35;
 		}
 	}
 
@@ -32,7 +33,7 @@ content {
 
 		.stage {
 			filter: blur(3px);
-			opacity: .5;
+			opacity: .35;
 		}
 	}
 
@@ -57,8 +58,8 @@ content {
 			position: absolute;
 			top: calc( var( --size ) * var( --y ) );
 			left: calc( var( --size ) * var( --x ) );
-			width: 43px;
-			height: 43px;
+			width: 37px;
+			height: 37px;
 			animation: rotate 3s linear infinite;
 
 			&[style*="--y: 1;"] { animation-delay: 100ms; }
@@ -66,10 +67,24 @@ content {
 			&[style*="--y: 3;"] { animation-delay: 500ms; }
 			&[style*="--y: 4;"] { animation-delay: 700ms; }
 
-			&[style*="--y: 1;"]:after { animation-delay: 400ms; }
-			&[style*="--y: 2;"]:after { animation-delay: 300ms; }
-			&[style*="--y: 3;"]:after { animation-delay: 200ms; }
-			&[style*="--y: 4;"]:after { animation-delay: 100ms; }
+			&[style*="--x: 1;"]:after { animation-delay: 1800ms; }
+			&[style*="--x: 2;"]:after { animation-delay: 1700ms; }
+			&[style*="--x: 3;"]:after { animation-delay: 1600ms; }
+			&[style*="--x: 4;"]:after { animation-delay: 1500ms; }
+			&[style*="--x: 5;"]:after { animation-delay: 1400ms; }
+			&[style*="--x: 6;"]:after { animation-delay: 1300ms; }
+			&[style*="--x: 7;"]:after { animation-delay: 1200ms; }
+			&[style*="--x: 8;"]:after { animation-delay: 1100ms; }
+			&[style*="--x: 9;"]:after { animation-delay: 1000ms; }
+			&[style*="--x: 10;"]:after { animation-delay: 900ms; }
+			&[style*="--x: 11;"]:after { animation-delay: 800ms; }
+			&[style*="--x: 12;"]:after { animation-delay: 700ms; }
+			&[style*="--x: 13;"]:after { animation-delay: 600ms; }
+			&[style*="--x: 14;"]:after { animation-delay: 500ms; }
+			&[style*="--x: 15;"]:after { animation-delay: 400ms; }
+			&[style*="--x: 16;"]:after { animation-delay: 300ms; }
+			&[style*="--x: 17;"]:after { animation-delay: 200ms; }
+			&[style*="--x: 18;"]:after { animation-delay: 100ms; }
 
 			&:after {
 				content: "";
@@ -78,8 +93,9 @@ content {
 				left: 0;
 				width: 15px;
 				height: 15px;
+				background: #ccc;
 				border-radius: 50%;
-				animation: yoyo 2s ease-in-out infinite;
+				animation: yoyo 1500ms ease-in-out infinite;
 			}
 		}
 	}
@@ -97,7 +113,7 @@ content {
 }
 
 @keyframes yoyo {
-	0%   { background: #bbb; }
-	50%  { background: #777; }
-	100% { background: #bbb; }
+	0%   { background: #ccc; }
+	50%  { background: #666; }
+	100% { background: #ccc; }
 }
