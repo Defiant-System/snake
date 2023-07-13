@@ -7,7 +7,6 @@ class GameManager {
 		let that = this;
 		this.fpsControl = karaqu.FpsControl({
 			callback() {
-				console.log(1);
 				let state = that.states[that.state];
 				if (!state) return this.stop();
 
@@ -22,38 +21,32 @@ class GameManager {
 	}
 
 	setState(name) {
-		let APP = snake,
-			currState = this.state;
+		let currState = this.state;
 
 		this.state = name;
 
 		switch (this.state) {
+			case "init":
+				break;
 			case "new":
 				if (this.state === "play") return;
-				// APP.content.removeClass("show-game-over show-paused");
 				this.state = "play";
 				this.fpsControl.fps = 30;
 				this.states.play.init();
 				this.fpsControl.start();
 				break;
 			case "restart":
-				this.state = "restart";
 				this.states.restart.init();
-				this.fpsControl.start();
-				break;
-			case "over":
-				// APP.content.addClass("show-game-over");
-				this.states.play.exit();
 				break;
 			case "pause":
 				if (currState === "play") {
-					// APP.content.addClass("show-paused");
+					this.states.pause.init();
+					this.fpsControl.stop();
 				} else {
-					// APP.content.removeClass("show-game-over show-paused");
 					// resume
 					this.state = "play";
-
-					this.fpsControl.stop();
+					this.states.pause.exit();
+					this.fpsControl.start();
 				}
 				break;
 		}

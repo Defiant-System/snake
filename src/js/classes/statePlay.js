@@ -5,6 +5,8 @@ class StatePlay {
 	}
 
 	init() {
+		snake.content.removeClass("show-game-over show-paused");
+
 		this.cvs = window.find(".stage");
 		this.ctx = this.cvs[0].getContext("2d", { willReadFrequently: true });
 		this.dimLong = 28;

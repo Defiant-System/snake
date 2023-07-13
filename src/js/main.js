@@ -11,21 +11,25 @@
 @import "./classes/grid.js"
 @import "./classes/group.js"
 @import "./classes/time.js"
-@import "./classes/restart.js"
+@import "./classes/stateInit.js"
 @import "./classes/statePlay.js"
+@import "./classes/stateRestart.js"
+@import "./classes/statePause.js"
 @import "./classes/gameManager.js"
 
 
-let game;
+let game = new GameManager();
+game.addState(new StateInit);
+game.addState(new StatePlay);
+game.addState(new StatePause);
+game.addState(new StateRestart);
+
 
 const snake = {
 	init() {
 		// fast references
-		this.stage = window.find(".stage");
+		this.content = window.find("content");
 
-		game = new GameManager();
-		game.addState(new StatePlay);
-		game.addState(new Restart);
 		game.setState("new");
 	},
 	dispatch(event) {
@@ -47,9 +51,6 @@ const snake = {
 					case "right": Keys.right = 1; break;
 					case "r":
 						game.setState("restart");
-						break;
-					case "g":
-						// game.setState("over");
 						break;
 					case "p":
 						game.setState("pause");

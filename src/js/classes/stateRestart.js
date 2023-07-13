@@ -1,5 +1,5 @@
 
-class Restart {
+class StateRestart {
 	constructor() {
 		this.name = "restart";
 	}

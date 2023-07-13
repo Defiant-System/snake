@@ -14,13 +14,90 @@ content {
 	background-size: cover;
 	--size: 26px;
 
+	&.show-paused {
+		.view-paused {
+			display: block;
+		}
+
+		.stage {
+			filter: blur(3px);
+			opacity: .5;
+		}
+	}
+
+	&.show-init {
+		.view-init {
+			display: block;
+		}
+
+		.stage {
+			filter: blur(3px);
+			opacity: .5;
+		}
+	}
+
+	.stage {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 416px;
+		width: 728px;
+	}
+
+
+	.view-init,
+	.view-paused {
+		display: none;
+		position: absolute;
+		top: 130px;
+		left: 104px;
+		z-index: 2;
+
+		i {
+			position: absolute;
+			top: calc( var( --size ) * var( --y ) );
+			left: calc( var( --size ) * var( --x ) );
+			width: 43px;
+			height: 43px;
+			animation: rotate 3s linear infinite;
+
+			&[style*="--y: 1;"] { animation-delay: 100ms; }
+			&[style*="--y: 2;"] { animation-delay: 300ms; }
+			&[style*="--y: 3;"] { animation-delay: 500ms; }
+			&[style*="--y: 4;"] { animation-delay: 700ms; }
+
+			&[style*="--y: 1;"]:after { animation-delay: 400ms; }
+			&[style*="--y: 2;"]:after { animation-delay: 300ms; }
+			&[style*="--y: 3;"]:after { animation-delay: 200ms; }
+			&[style*="--y: 4;"]:after { animation-delay: 100ms; }
+
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				animation: yoyo 2s ease-in-out infinite;
+			}
+		}
+	}
+
+	.view-init {
+		top: 52px;
+		left: 130px;
+	}
 }
 
-.stage {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 416px;
-	width: 728px;
+@keyframes rotate {
+	0%   { transform: rotate(0deg); }
+	50%  { transform: rotate(180deg); }
+	100% { transform: rotate(360deg); }
 }
 
+@keyframes yoyo {
+	0%   { background: #bbb; }
+	50%  { background: #777; }
+	100% { background: #bbb; }
+}
