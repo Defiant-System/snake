@@ -11,7 +11,7 @@
 @import "./classes/grid.js"
 @import "./classes/group.js"
 @import "./classes/time.js"
-@import "./classes/stateInit.js"
+@import "./classes/stateStart.js"
 @import "./classes/statePlay.js"
 @import "./classes/stateRestart.js"
 @import "./classes/statePause.js"
@@ -19,7 +19,7 @@
 
 
 let game = new GameManager();
-game.addState(new StateInit);
+game.addState(new StateStart);
 game.addState(new StatePlay);
 game.addState(new StatePause);
 game.addState(new StateRestart);
@@ -30,7 +30,7 @@ const snake = {
 		// fast references
 		this.content = window.find("content");
 
-		game.setState("new");
+		game.setState("start");
 	},
 	dispatch(event) {
 		let APP = snake,

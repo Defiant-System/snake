@@ -26,7 +26,8 @@ class GameManager {
 		this.state = name;
 
 		switch (this.state) {
-			case "init":
+			case "start":
+				this.states.start.init();
 				break;
 			case "new":
 				if (this.state === "play") return;

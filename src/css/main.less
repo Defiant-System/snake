@@ -9,11 +9,11 @@ content {
 	right: 8px;
 	bottom: 8px;
 	// background: #00f;
+	font-family: BebasNeueRegular, Arial, sans-serif;
 	background: radial-gradient(#333, #111);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	--size: 26px;
 
 	&.show-paused {
 		.view-paused {
@@ -26,14 +26,45 @@ content {
 		}
 	}
 
-	&.show-init {
-		.view-init {
+	&.show-start {
+		.view-start {
 			display: block;
 		}
 
 		.stage {
 			filter: blur(3px);
 			opacity: .35;
+		}
+	}
+
+	&.show-fireworks {
+		.view-start {
+			.best-score {
+				display: block;
+
+				h2 {
+					animation: textBounce 1000ms ease-in-out 4,
+								textColors 3500ms infinite;
+
+					span {
+						animation: bgColors 3500ms infinite;
+					}
+				}
+			}
+
+			.pyro {
+				> .before,
+				> .after {
+					animation: 1s bang ease-out 7 backwards,
+								1s gravity ease-in 7 backwards,
+								5s position linear 7 backwards;
+				}
+
+				> .after {
+					animation-delay: 1.25s, 1.25s, 1.25s;
+					animation-duration: 1.25s, 1.25s, 6.25s;
+				}
+			}
 		}
 	}
 
@@ -45,14 +76,13 @@ content {
 		width: 728px;
 	}
 
-
-	.view-init,
 	.view-paused {
 		display: none;
 		position: absolute;
 		top: 130px;
 		left: 104px;
 		z-index: 2;
+		--size: 26px;
 
 		i {
 			position: absolute;
@@ -60,7 +90,19 @@ content {
 			left: calc( var( --size ) * var( --x ) );
 			width: 37px;
 			height: 37px;
+			border-radius: 50%;
 			animation: rotate 3s linear infinite;
+
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 15px;
+				height: 15px;
+				background: #ccc;
+				animation: yoyo 1500ms ease-in-out infinite;
+			}
 
 			&[style*="--y: 1;"] { animation-delay: 100ms; }
 			&[style*="--y: 2;"] { animation-delay: 300ms; }
@@ -85,25 +127,143 @@ content {
 			&[style*="--x: 16;"]:after { animation-delay: 300ms; }
 			&[style*="--x: 17;"]:after { animation-delay: 200ms; }
 			&[style*="--x: 18;"]:after { animation-delay: 100ms; }
-
-			&:after {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 15px;
-				height: 15px;
-				background: #ccc;
-				border-radius: 50%;
-				animation: yoyo 1500ms ease-in-out infinite;
-			}
 		}
 	}
 
-	.view-init {
-		top: 52px;
-		left: 130px;
+	.view-start {
+		display: none;
+		position: absolute;
+		top: 5px;
+		left: 45px;
+
+		.logo {
+			position: relative;
+			top: 10px;
+			left: 115px;
+			width: 410px;
+			height: 110px;
+
+			i {
+				background: #ccc;
+				position: absolute;
+				top: calc( 7px * var( --y ) );
+				left: calc( 7px * var( --x ) );
+				width: 14px;
+				height: 14px;
+				animation: backForth 1500ms ease-in-out alternate infinite;
+
+				&[style*="--y: 4;"] { animation-delay: 100ms; }
+				&[style*="--y: 7;"] { animation-delay: 300ms; }
+				&[style*="--y: 10;"] { animation-delay: 500ms; }
+				&[style*="--y: 13;"] { animation-delay: 700ms; }
+			}
+		}
+
+		.instructions {
+			// background: rgba(255,255,255,.1);
+			position: relative;
+			top: 55px;
+			left: 120px;
+
+			.row {
+				margin: 7px auto;
+				width: 300px;
+				display: flex;
+
+				> div {
+					width: 130px;
+					text-align: right;
+				}
+
+				h2 {
+					flex: 1;
+					padding: 5px 0 0 7px;
+					white-space: nowrap;
+					text-align: left;
+					font-size: 29px;
+					color: #fff;
+				}
+
+				&.push {
+					margin-top: 19px;
+				}
+			}
+
+			.key {
+				background: #fff;
+				color: #000;
+				display: inline-block;
+				width: 37px;
+				height: 37px;
+				border-radius: 5px;
+				text-align: center;
+				padding-top: 7px;
+				font-size: 28px;
+				margin: 0 7px 0 0;
+				background-position: 5px 5px;
+				background-size: 31px 31px;
+				background-repeat: no-repeat;
+
+				&.icon-arrow-left  { background-image: url(~/icons/icon-arrow-left.png); }
+				&.icon-arrow-right { background-image: url(~/icons/icon-arrow-right.png); }
+				&.icon-arrow-up    { background-image: url(~/icons/icon-arrow-up.png); }
+				&.icon-arrow-down  { background-image: url(~/icons/icon-arrow-down.png); }
+
+				&.esc {
+					font-size: 21px;
+					padding-top: 9px;
+				}
+			}
+		}
+
+		.best-score {
+			display: none;
+			position: relative;
+			top: 37px;
+			left: 120px;
+			perspective: 100px;
+
+			h2 {
+				position: relative;
+				transform: translateZ(0);
+				text-align: center;
+				font-size: 29px;
+				color: #fff;
+
+				span {
+					background: #fff;
+					color: #000;
+					padding: 3px 7px 1px;
+					border-radius: 5px;
+					display: inline-block;
+					margin-left: 5px;
+				}
+			}
+		}
+
+		.pyro {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 100;
+
+			> .before,
+			> .after {
+				position: absolute;
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				.pyroShadowLoop(50);
+			}
+		}
 	}
+}
+
+
+@keyframes backForth {
+	0%   { transform: translateX(0px); }
+	100% { transform: translateX(30px); }
 }
 
 @keyframes rotate {
@@ -117,3 +277,135 @@ content {
 	50%  { background: #666; }
 	100% { background: #ccc; }
 }
+
+@keyframes textBounce {
+	  0%, 20%, 50%, 80%, 100% { transform: translateZ(0); }
+	  45% { transform: translateZ(-30px); }
+	  60% { transform: translateZ(-15px); }
+}
+
+@keyframes textColors {
+	100%, 0% { color: #ffb; }
+	20% { color: #fbf; }
+	40% { color: #bff; }
+	60% { color: #bbf; }
+	80% { color: #bfb; }
+}
+
+@keyframes bgColors {
+	100%, 0% { background: #ffb; }
+	20% { background: #fbf; }
+	40% { background: #bff; }
+	60% { background: #bbf; }
+	80% { background: #bfb; }
+}
+
+.pyroShadowLoop(@count) when (@count > 0) {
+    .pyroShadowLoop(@count - 1);
+    box-shadow+: 0 0 #fff;
+}
+
+// copied from: https://codepen.io/yshlin/pen/ylDEk
+@keyframes bang {
+	to {
+		box-shadow: -195px -358.6666666667px #ff3300,
+					-188px 74.3333333333px #9dff00,
+					86px -174.6666666667px #ff001e,
+					-70px -41.6666666667px #7b00ff,
+					199px -331.6666666667px #ff00d5,
+					-70px -103.6666666667px #c4ff00,
+					4px -387.6666666667px #00eeff,
+					-61px -229.6666666667px #ff002f,
+					112px -146.6666666667px #00ffdd,
+					187px 67.3333333333px #ff00b7,
+					-50px -396.6666666667px #5500ff,
+					177px -356.6666666667px #00eeff,
+					-165px -120.6666666667px #ff00b3,
+					151px 37.3333333333px #ff007b,
+					17px -32.6666666667px #00ff26,
+					215px -115.6666666667px #8cff00,
+					-139px -41.6666666667px #77ff00,
+					-84px -100.6666666667px #ff009d,
+					-90px -130.6666666667px #91ff00,
+					-100px -343.6666666667px #2600ff,
+					222px -415.6666666667px #9900ff,
+					-102px -216.6666666667px #ff0051,
+					-135px -414.6666666667px #00ff1e,
+					-130px -80.6666666667px #00ff73,
+					-83px -50.6666666667px #0d00ff,
+					149px -135.6666666667px #002bff,
+					-174px -307.6666666667px #004dff,
+					-155px -252.6666666667px #00ffb3,
+					28px -402.6666666667px #ffd000,
+					-150px -236.6666666667px #00ffd9,
+					249px -164.6666666667px #ff0004,
+					49px -94.6666666667px #1aff00,
+					-216px -98.6666666667px #00ff77,
+					-101px -147.6666666667px #2200ff,
+					240px 1.3333333333px #00ffea,
+					-55px -139.6666666667px #ff5900,
+					-120px 1.3333333333px #ff8800,
+					75px -265.6666666667px #00ffbb,
+					204px -4.6666666667px #ff00ea,
+					-76px -108.6666666667px #0044ff,
+					-180px -48.6666666667px #ff5500,
+					-129px -367.6666666667px #8000ff,
+					-19px -189.6666666667px #91ff00,
+					210px -100.6666666667px #ffc400,
+					-71px -170.6666666667px #00ff33,
+					-155px -117.6666666667px #0091ff,
+					66px -259.6666666667px #00ff9d,
+					98px -3.6666666667px #0026ff,
+					-143px -128.6666666667px #0dff00,
+					127px -47.6666666667px #00b3ff,
+					79px -216.6666666667px #ff00d9;
+	}
+}
+
+@keyframes gravity {
+	to {
+		transform: translateY(200px);
+		opacity: 0;
+	}
+}
+
+@keyframes position {
+	0%,
+	19.9% {
+		margin-top: 10%;
+		margin-left: 40%;
+	}
+	20%,
+	39.9% {
+		margin-top: 40%;
+		margin-left: 30%;
+	}
+	40%,
+	59.9% {
+		margin-top: 20%;
+		margin-left: 70%;
+	}
+	60%,
+	79.9% {
+		margin-top: 30%;
+		margin-left: 20%;
+	}
+	80%,
+	99.9% {
+		margin-top: 30%;
+		margin-left: 80%;
+	}
+}
+
+
+
+// custom fonts
+@font-face {
+	font-family: "BebasNeueRegular";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(~/fonts/BebasNeue-webfont.woff) format("woff2");
+}
+
+
