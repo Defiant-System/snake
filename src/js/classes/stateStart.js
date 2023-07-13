@@ -5,7 +5,10 @@ class StateStart {
 	}
 
 	init() {
-		snake.content.addClass("show-start show-fireworks");
+		snake.content.removeClass("show-pause show-fireworks").addClass("show-start");
+
+		let Play = game.states.play;
+		Play.cvs.attr({ width: Play.activeWidth, height: Play.activeHeight });
 	}
 
 	exit() {

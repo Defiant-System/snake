@@ -4,6 +4,11 @@
 		<Menu type="divider"/>
 		<Menu name="Quit Snake" shell="win -c"/>
 	</Menu>
+	<Menu name="Game">
+		<Menu name="New Game" click="new-game" hotkey="escape"/>
+		<Menu name="Toggle Pause" click="pause-game" hotkey="p"/>
+		<Menu name="Reset" click="reset-game" hotkey="r"/>
+	</Menu>
 	<Menu name="Help">
 		<Menu name="Help" click="open-help"/>
 		<Menu type="divider"/>

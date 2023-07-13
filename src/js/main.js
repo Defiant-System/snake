@@ -25,6 +25,9 @@ game.addState(new StatePause);
 game.addState(new StateRestart);
 
 
+// let bestScore = window.settings.getItem("settings") || 0;
+
+
 const snake = {
 	init() {
 		// fast references
@@ -37,6 +40,7 @@ const snake = {
 			Keys = game.states.play.keys;
 		// console.log(event);
 		switch (event.type) {
+			// system events
 			case "window.init":
 				break;
 			case "window.keystroke":
@@ -68,6 +72,16 @@ const snake = {
 					case "d":
 					case "right": Keys.right = 0; break;
 				}
+				break;
+			// custom events
+			case "new-game":
+				game.setState("new");
+				break;
+			case "pause-game":
+				game.setState("pause");
+				break;
+			case "reset-game":
+				game.setState("start");
 				break;
 			case "open-help":
 				karaqu.shell("fs -u '~/help/index.md'");

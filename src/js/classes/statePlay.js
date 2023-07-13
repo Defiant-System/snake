@@ -2,13 +2,13 @@
 class StatePlay {
 	constructor() {
 		this.name = "play";
+		this.cvs = window.find(".stage");
+		this.ctx = this.cvs[0].getContext("2d", { willReadFrequently: true });
 	}
 
 	init() {
 		snake.content.removeClass("show-start show-fireworks show-paused");
 
-		this.cvs = window.find(".stage");
-		this.ctx = this.cvs[0].getContext("2d", { willReadFrequently: true });
 		this.dimLong = 28;
 		this.dimShort = 16;
 		this.margin = 8;

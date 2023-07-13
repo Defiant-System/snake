@@ -28,8 +28,10 @@ class GameManager {
 		switch (this.state) {
 			case "start":
 				this.states.start.init();
+				this.fpsControl.stop();
 				break;
 			case "new":
+				if (currState === "over") return this.setState("restart");
 				if (this.state === "play") return;
 				this.state = "play";
 				this.fpsControl.fps = 30;
