@@ -49,8 +49,8 @@ const snake = {
 					case "left":  Keys.left = 1; break;
 					case "d":
 					case "right": Keys.right = 1; break;
-					case "r":
-						game.setState("restart");
+					case "esc":
+						game.setState("new");
 						break;
 					case "p":
 						game.setState("pause");
