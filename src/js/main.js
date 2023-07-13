@@ -25,7 +25,7 @@ game.addState(new StatePause);
 game.addState(new StateRestart);
 
 
-// let bestScore = window.settings.getItem("settings") || 0;
+let bestScore = window.settings.getItem("best-score") || 0;
 
 
 const snake = {

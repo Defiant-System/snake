@@ -9,7 +9,7 @@ class StateRestart {
 	}
 
 	exit() {
-		game.setState("new");
+		game.setState("start");
 	}
 
 	step() {

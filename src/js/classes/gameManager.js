@@ -30,8 +30,10 @@ class GameManager {
 				this.states.start.init();
 				this.fpsControl.stop();
 				break;
+			case "over":
+				setTimeout(() => this.setState("restart"), 1000);
+				break;
 			case "new":
-				if (currState === "over") return this.setState("restart");
 				if (this.state === "play") return;
 				this.state = "play";
 				this.fpsControl.fps = 30;
