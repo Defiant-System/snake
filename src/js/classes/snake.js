@@ -33,7 +33,7 @@ class Snake {
 		this.deathFlag = 0;
 		this.justAteTick = 0;
 		this.justAteTickMax = 1;
-		this.justAteTickChange = 0.05;
+		this.justAteTickChange = 0.025;
 
 		// sync data grid of the play state
 		var i = this.tiles.length;
