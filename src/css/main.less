@@ -27,6 +27,20 @@ content {
 	}
 
 	&.show-start {
+		background: radial-gradient(#333, #111);
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 1px;
+			bottom: 1px;
+			pointer-events: none;
+			background: repeating-linear-gradient(0deg, transparent 0px, transparent 25px, #2b2b2b 26px),
+						repeating-linear-gradient(90deg, transparent 0px, transparent 25px, #2b2b2b 26px);
+		}
+
 		.view-start {
 			display: block;
 		}
