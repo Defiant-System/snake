@@ -1,7 +1,7 @@
 <Application>
 	<Head>
 		<meta name="id" value="snake"/>
-		<meta name="title" value="Snake" version="1.21"/>
+		<meta name="title" value="Snake" version="1.22"/>
 		<meta name="author" value="Jack Rugile" namespace="ant" ported="Hakan Bilgin"/>
 		<meta name="license" value="AGPL-3.0"/>
 		<meta name="repository" value="https://github.com/Defiant-System/snake"/>

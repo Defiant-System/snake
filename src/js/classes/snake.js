@@ -28,7 +28,7 @@ class Snake {
 		this.last = 0;
 		this.updateTick = 10;
 		this.updateTickMax = this.updateTick;
-		this.updateTickLimit = 3;
+		this.updateTickLimit = 6;
 		this.updateTickChange = 0.2;
 		this.deathFlag = 0;
 		this.justAteTick = 0;

@@ -7,12 +7,12 @@
 		.st3{fill:#469;}
 	</style>
 	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="11.814" y1="0.3311" x2="43.186" y2="54.6689">
-		<stop  offset="0" style="stop-color:#f90"/>
-		<stop  offset="1" style="stop-color:#c50"/>
+		<stop  offset="0" style="stop-color:#aaa"/>
+		<stop  offset="1" style="stop-color:#666"/>
 	</linearGradient>
 	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="11.636" y1="55.9772" x2="43.364" y2="1.0228" gradientTransform="matrix(1 0 0 -1 0 56)">
-		<stop  offset="0" style="stop-color:#ee2"/>
-		<stop  offset="1" style="stop-color:#bb1"/>
+		<stop  offset="0" style="stop-color:#eee"/>
+		<stop  offset="1" style="stop-color:#bbb"/>
 	</linearGradient>
 	<path class="st0" d="M46.3,52H8.7C5.6,52,3,49.4,3,46.3V8.7C3,5.6,5.6,3,8.7,3h37.6C49.4,3,52,5.6,52,8.7v37.6 C52,49.4,49.4,52,46.3,52z"/>
 	<path class="st1" d="M46.3,52H8.7C5.6,52,3,49.4,3,46.3V8.7C3,5.6,5.6,3,8.7,3h37.6C49.4,3,52,5.6,52,8.7v37.6 C52,49.4,49.4,52,46.3,52z"/>

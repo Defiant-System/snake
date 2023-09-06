@@ -19,8 +19,8 @@ class FoodTile {
 		this.y = this.row * this.parentState.tileHeight;
 		this.scale = 0.55 + Math.sin( this.parentState.time.elapsed / 200 ) * 0.45;
 
-		if( this.parentState.food.birthTick || this.parentState.food.deathTick ) {
-			if( this.parentState.food.birthTick ) {
+		if (this.parentState.food.birthTick || this.parentState.food.deathTick ) {
+			if (this.parentState.food.birthTick ) {
 				this.opacity = 1 - ( this.parentState.food.birthTick / 1 ) * 1;
 			} else {
 				this.opacity = ( this.parentState.food.deathTick / 1 ) * 1;
