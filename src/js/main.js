@@ -18,6 +18,9 @@
 @import "./classes/gameManager.js"
 
 
+let defaultDir = "e";
+let defaultTail = [[11, 6], [12, 6], [13, 6], [14, 6], [15, 6]];
+
 let game = new GameManager();
 game.addState(new StateStart);
 game.addState(new StatePlay);
@@ -42,8 +45,9 @@ const snake = {
 		switch (event.type) {
 			// system events
 			case "window.init":
-				break;
 			case "window.keystroke":
+				break;
+			case "window.keydown":
 				switch (event.char) {
 					case "w":
 					case "up":    Keys.up = 1; break;
@@ -62,16 +66,16 @@ const snake = {
 				}
 				break;
 			case "window.keyup":
-				switch (event.char) {
-					case "w":
-					case "up":    Keys.up = 0; break;
-					case "s":
-					case "down":  Keys.down = 0; break;
-					case "a":
-					case "left":  Keys.left = 0; break;
-					case "d":
-					case "right": Keys.right = 0; break;
-				}
+				// switch (event.char) {
+				// 	case "w":
+				// 	case "up":    Keys.up = 0; break;
+				// 	case "s":
+				// 	case "down":  Keys.down = 0; break;
+				// 	case "a":
+				// 	case "left":  Keys.left = 0; break;
+				// 	case "d":
+				// 	case "right": Keys.right = 0; break;
+				// }
 				break;
 			// custom events
 			case "new-game":

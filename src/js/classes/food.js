@@ -21,18 +21,23 @@ class Food {
 	}
 
 	reset() {
-		var empty = [];
-		for (var x = 0; x < this.parentState.cols; x++) {
-			for (var y = 0; y < this.parentState.rows; y++) {
-				var tile = this.parentState.grid.get(x, y);
-				if (tile == "empty") {
-					empty.push({ x, y });
+		let empty = [];
+		// let snake = [];
+		for (let x = 0; x < this.parentState.cols; x++) {
+			for (let y = 0; y < this.parentState.rows; y++) {
+				let name = this.parentState.grid.get(x, y);
+				if (name == "empty") {
+					empty.push({ name, x, y });
+				// } else {
+					// snake.push({ x, y });
 				}
 			}
 		}
 
-		var newTile = empty[ Util.randInt(0, empty.length - 1) ];
-		// newTile = {x: 14, y: 8};
+		let newTile = empty[ Util.randInt(0, empty.length - 1) ];
+		// console.log( newTile.name, newTile.x, newTile.y );
+		if (newTile.name !== "empty") return this.reset();
+		// newTile = {x: 21, y: 6};
 		this.tile.col = newTile.x;
 		this.tile.row = newTile.y;
 	}

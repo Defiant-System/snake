@@ -4,12 +4,12 @@
 		.st0{fill:url(#SVGID_1_);}
 		.st1{fill:none;stroke:url(#SVGID_2_);stroke-width:2;stroke-miterlimit:10;}
 		.st2{fill:#fff;}
-		.st3{fill:#469;}
+		.st3{fill:#3d3;}
 	</style>
-	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="11.814" y1="0.3311" x2="43.186" y2="54.6689">
-		<stop  offset="0" style="stop-color:#aaa"/>
-		<stop  offset="1" style="stop-color:#666"/>
-	</linearGradient>
+	<radialGradient id="SVGID_1_" cx="27" cy="27" r="37" fx="31" fy="29" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#888"/>
+		<stop  offset="1" style="stop-color:#111"/>
+	</radialGradient>
 	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="11.636" y1="55.9772" x2="43.364" y2="1.0228" gradientTransform="matrix(1 0 0 -1 0 56)">
 		<stop  offset="0" style="stop-color:#eee"/>
 		<stop  offset="1" style="stop-color:#bbb"/>
