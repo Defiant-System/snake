@@ -40,7 +40,7 @@ const snake = {
 	},
 	dispatch(event) {
 		let APP = snake,
-			Keys = game.states.play.keys;
+			Keys = game.states.play.keys || {};
 		// console.log(event);
 		switch (event.type) {
 			// system events
