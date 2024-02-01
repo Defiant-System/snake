@@ -1,8 +1,9 @@
 
+@import "./modules/fx.js"
 @import "./modules/misc.js"
 @import "./modules/test.js"
 
-
+@import "./classes/shard.js"
 @import "./classes/boardTile.js"
 @import "./classes/snake.js"
 @import "./classes/snakeTile.js"

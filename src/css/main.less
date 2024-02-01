@@ -90,12 +90,21 @@ content {
 		}
 	}
 
-	.stage {
+	canvas.stage {
 		position: absolute;
 		top: 0;
 		left: 0;
 		height: 416px;
 		width: 728px;
+	}
+
+	canvas.fx-layer {
+		position: absolute;
+		top: -70px;
+		left: -70px;
+		height: 556px;
+		width: 868px;
+		pointer-events: none;
 	}
 
 	.view-paused {
