@@ -221,28 +221,60 @@ content {
 			}
 
 			.key {
-				background: #fff;
-				color: #000;
+				background: #888;
+				color: #fff;
+				position: relative;
 				display: inline-block;
-				width: 37px;
-				height: 37px;
+				width: 36px;
+				height: 34px;
 				border-radius: 5px;
 				text-align: center;
-				padding-top: 7px;
-				font-size: 28px;
 				margin: 0 7px 0 0;
-				background-position: 5px 5px;
-				background-size: 31px 31px;
-				background-repeat: no-repeat;
+				text-shadow: 0 1px 0 rgba(#000,.25);
+				box-shadow: 0px 3px 0px 0px #666;
 
-				&.icon-arrow-left  { background-image: url(~/icons/icon-arrow-left.png); }
-				&.icon-arrow-right { background-image: url(~/icons/icon-arrow-right.png); }
-				&.icon-arrow-up    { background-image: url(~/icons/icon-arrow-up.png); }
-				&.icon-arrow-down  { background-image: url(~/icons/icon-arrow-down.png); }
+				&:before {
+					content: "";
+					position: absolute;
+					top: 7px;
+					left: 8px;
+					width: 24px;
+					height: 24px;
+					background-position: 50% 50%;
+					background-size: 100% auto;
+					background-repeat: no-repeat;
+					filter: invert(1) drop-shadow(0 1px 0 rgba(#000,.5));
+				}
+
+				&:after {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					border-radius: inherit;
+					background-image: radial-gradient(ellipse at bottom center, #ffffff99, transparent);
+					pointer-events: none;
+				}
+
+				&.icon-arrow-left:before  { background-image: url(~/icons/icon-arrow-left.png); }
+				&.icon-arrow-right:before { background-image: url(~/icons/icon-arrow-right.png); }
+				&.icon-arrow-up:before    { background-image: url(~/icons/icon-arrow-up.png); }
+				&.icon-arrow-down:before  { background-image: url(~/icons/icon-arrow-down.png); }
 
 				&.esc {
+					background: #833;
+					box-shadow: 0px 3px 0px 0px #633;
 					font-size: 21px;
 					padding-top: 9px;
+				}
+
+				&.pause {
+					background: #383;
+					box-shadow: 0px 3px 0px 0px #161;
+					padding-top: 5px;
+					font-size: 28px;
 				}
 			}
 		}
