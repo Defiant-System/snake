@@ -12,18 +12,18 @@ class Shard {
 
 		// set a random angle in all possible directions, in radians
 		this.angle = Util.rand(-1.75, -2.5) + (Math.random() > .5 ? 0 : Math.PI * .33);
-		this.speed = Util.rand(12, 19);
+		this.speed = Util.rand(4, 10);
 
-		this.moveRotation = Util.rand(-17, 17);
+		this.moveRotation = Util.rand(-12, 12);
 		this.rotation = 0;
 		this.rad = Math.PI / 180;
 
 		// friction will slow the shard down
-		this.friction = 0.9;
+		this.friction = 0.925;
 		// gravity will be applied and pull the shard down
-		this.gravity = 3.5;
+		this.gravity = 2.5;
 		// set how fast the shard fades out
-		this.decay = Util.rand(0.03, 0.05);
+		this.decay = Util.rand(0.04, 0.07);
 		this.alpha = 1;
 	}
 
