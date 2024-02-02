@@ -11,19 +11,14 @@ let FX = {
 		this.cvs.attr({ width, height });
 		this.dim = { width, height };
 	},
-	explode(cell) {
-		var particleCount = Utils.random(1, 3) | 0,
-			x = (cell[0] * 26) + 13,
-			y = (cell[1] * 26) + 13,
-			color = cell[2] - 1; // Utils.random(1, 7) | 0;
-		// fog
-		this.particles.push(new Fog(this, x, y, color));
+	explode(tile) {
+		var particleCount = 3,
+			x = tile.col * 26,
+			y = tile.row * 26;
 		// shards
 		while(particleCount--) {
-			this.particles.push(new Shard(this, x, y, color));
+			this.particles.push(new Shard(this, x, y));
 		}
-		// sparkle
-		this.particles.push(new Sparkle(this, x, y, color));
 	},
 	update() {
 		let i = this.particles.length;
@@ -33,6 +28,7 @@ let FX = {
 	},
 	draw() {
 		let ctx = this.ctx;
+		if (!this.particles.length) return;
 		// reset canvas
 		this.cvs.attr({ width: this.dim.width });
 		this.ctx.save();

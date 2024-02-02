@@ -3,6 +3,7 @@ class GameManager {
 	constructor() {
 		this.time = new Time();
 		this.states = {};
+		FX.init();
 
 		let that = this;
 		this.fpsControl = karaqu.FpsControl({
@@ -12,6 +13,7 @@ class GameManager {
 
 				that.states[that.state].step();
 				that.time.update();
+				FX.draw();
 			}
 		});
 	}
@@ -24,7 +26,7 @@ class GameManager {
 		let currState = this.state;
 
 		this.state = name;
-
+		
 		switch (this.state) {
 			case "start":
 				this.states.start.init();

@@ -1,29 +1,29 @@
 
 class Shard {
-	constructor(parent, x, y, color) {
+	constructor(parent, x, y) {
 		this.parent = parent;
 		this.x = x;
 		this.y = y;
 
-		let frag = frags[color];
-		this.cX = frag.w >> 1;
-		this.cY = frag.h >> 1;
-		this.frag = frag[Utils.random(0, frag.length-1) | 0];
+		this.w =
+		this.h = Util.rand(7, 13);
+		this.cX =
+		this.cY = this.w * .5;
 
 		// set a random angle in all possible directions, in radians
-		this.angle = Utils.random(-1.75, -2.5) + (Math.random() > .5 ? 0 : Math.PI * .33);
-		this.speed = Utils.random(12, 19);
+		this.angle = Util.rand(-1.75, -2.5) + (Math.random() > .5 ? 0 : Math.PI * .33);
+		this.speed = Util.rand(12, 19);
 
-		this.moveRotation = Utils.random(-1, 1);
+		this.moveRotation = Util.rand(-17, 17);
 		this.rotation = 0;
 		this.rad = Math.PI / 180;
 
 		// friction will slow the shard down
-		this.friction = 0.8;
+		this.friction = 0.9;
 		// gravity will be applied and pull the shard down
-		this.gravity = 4;
+		this.gravity = 3.5;
 		// set how fast the shard fades out
-		this.decay = Utils.random(0.03, 0.05);
+		this.decay = Util.rand(0.03, 0.05);
 		this.alpha = 1;
 	}
 
@@ -50,9 +50,10 @@ class Shard {
 		ctx.translate(this.x, this.y);
 		ctx.rotate(this.rotation * this.rad);
 
+		ctx.fillStyle = "#fff";
 		ctx.globalAlpha = this.alpha;
 		// ctx.globalCompositeOperation = "lighter";
-		ctx.drawImage(this.frag.img, -this.cX, -this.cY);
+		ctx.fillRect(-this.cX, -this.cY, this.w, this.h);
 
 		ctx.restore();
 	}

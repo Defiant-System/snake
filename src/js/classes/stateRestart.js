@@ -5,11 +5,11 @@ class StateRestart {
 	}
 
 	init() {
-		game.fpsControl.fps = 20;
+		game.fpsControl.fps = 40;
 	}
 
 	exit() {
-		game.setState("start");
+		setTimeout(() => game.setState("start"), 1200);
 	}
 
 	step() {
@@ -17,6 +17,8 @@ class StateRestart {
 		if (!Play.snake.tiles.length) return this.exit();
 		
 		let tile = Play.snake.tiles.pop();
+		// explode effect
+		FX.explode(tile);
 		Play.grid.set(tile.col, tile.row, "empty");
 		Play.boardTiles.collection[tile.col + (tile.row * Play.cols)].classes.pressed = 2;
 		
