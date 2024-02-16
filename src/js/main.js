@@ -64,6 +64,10 @@ const snake = {
 					case "p":
 						game.setState("pause");
 						break;
+					case "x":
+						// temp; for debug purpose
+						console.log( game );
+						break;
 				}
 				break;
 			case "window.keyup":
