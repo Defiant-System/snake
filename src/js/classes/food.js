@@ -25,11 +25,9 @@ class Food {
 		// let snake = [];
 		for (let x = 0; x < this.parentState.cols; x++) {
 			for (let y = 0; y < this.parentState.rows; y++) {
-				let name = this.parentState.grid.get(x, y);
+				let name = this.parentState.grid.get(y, x);
 				if (name == "empty") {
 					empty.push({ name, x, y });
-				// } else {
-					// snake.push({ x, y });
 				}
 			}
 		}
@@ -53,7 +51,7 @@ class Food {
 		else if (this.birthTick < 0) this.birthTick = 0;
 
 		// sync data grid of the play state
-		this.parentState.grid.set(this.tile.col, this.tile.row, "food");
+		this.parentState.grid.set(this.tile.row, this.tile.col, "food");
 	}
 
 	render() {

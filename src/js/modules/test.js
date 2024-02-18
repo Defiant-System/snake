@@ -4,6 +4,9 @@ let Test = {
 		// setTimeout(() => window.dialog.alert({ message: "test", onOk: () => console.log(123) }), 300);
 		// setTimeout(() => snake.dispatch({ type: "window.keystroke", char: "p" }), 500);
 
+		// setTimeout(() => game.setState("new"), 100);
+		// setTimeout(() => game.setState("pause"), 200);
+
 		/*
 		setTimeout(() => {
 			defaultTail = [];

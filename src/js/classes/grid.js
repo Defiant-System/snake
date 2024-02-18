@@ -4,20 +4,20 @@ class Grid {
 		this.cols = cols;
 		this.rows = rows;
 		this.tiles = [];
-		for (let x = 0; x < cols; x++) {
-			this.tiles[x] = [];
-			for (let y = 0; y < rows; y++) {
-				this.tiles[x].push( "empty" );
+		for (let y = 0; y < rows; y++) {
+			this.tiles[y] = [];
+			for (let x = 0; x < cols; x++) {
+				this.tiles[y].push( "empty" );
 			}
 		}
 	}
 
-	get(x, y) {
-		return this.tiles[x][y];
+	get(y, x) {
+		return this.tiles[y][x];
 	}
 
-	set(x, y, val) {
-		this.tiles[x][y] = val;
+	set(y, x, val) {
+		this.tiles[y][x] = val;
 	}
 
 	distance(tile1, tile2) {

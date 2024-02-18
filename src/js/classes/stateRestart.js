@@ -19,7 +19,7 @@ class StateRestart {
 		let tile = Play.snake.tiles.pop();
 		// explode effect
 		FX.explode(tile);
-		Play.grid.set(tile.col, tile.row, "empty");
+		Play.grid.set(tile.row, tile.col, "empty");
 		Play.boardTiles.collection[tile.col + (tile.row * Play.cols)].classes.pressed = 2;
 		
 		Play.boardTiles.each("update");

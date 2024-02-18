@@ -62,7 +62,7 @@ const snake = {
 						game.setState("new");
 						break;
 					case "p":
-						game.setState("pause");
+						if (game.state === "play") game.setState("pause");
 						break;
 					case "x":
 						// temp; for debug purpose
