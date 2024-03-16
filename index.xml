@@ -2,7 +2,7 @@
 	<Head>
 		<meta name="id" value="snake"/>
 		<meta name="title" value="Snake" version="1.29"/>
-		<meta name="author" value="Jack Rugile" namespace="ant" ported="Hakan Bilgin"/>
+		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0"/>
 		<meta name="repository" value="https://github.com/Defiant-System/snake"/>
 		<meta name="width" value="744"/>
