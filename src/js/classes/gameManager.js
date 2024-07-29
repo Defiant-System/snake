@@ -38,7 +38,7 @@ class GameManager {
 			case "new":
 				if (this.state === "play") return;
 				this.state = "play";
-				this.fpsControl.fps = 60;
+				this.fpsControl.fps = 30;
 				this.states.play.init();
 				this.fpsControl.start();
 				break;

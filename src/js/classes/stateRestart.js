@@ -5,7 +5,7 @@ class StateRestart {
 	}
 
 	init() {
-		game.fpsControl.fps = 40;
+		game.fpsControl.fps = 30;
 	}
 
 	exit() {
